@@ -5,7 +5,12 @@ const path = require('path')
 const routes = require('./routes')
 
 const server = express()
-server.engine('hbs', hbs())
+server.engine(
+  'hbs',
+  hbs.engine({
+    extname: 'hbs',
+  })
+)
 server.set('view engine', 'hbs')
 server.set('views', path.join(__dirname, 'views'))
 server.use(express.urlencoded({ extended: true }))
